@@ -25,13 +25,13 @@ public class PluginConfig
         SelectedFrameVariant = cfg.Bind(
             "Hotbar Redesign",
             "Hotbar design variant",
-            1,
+            0,
             "Select among the variants of the selected hotbar design. If the variant is not found, the first existing will be used instead."
         );
     }
 
     internal static void OnChanged(object sender, SettingChangedEventArgs args)
     {
-        
+        Utils.Utils.TrySetSlotFrames(SelectedFrameType.Value, SelectedFrameVariant.Value);
     }
 }

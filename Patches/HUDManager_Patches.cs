@@ -5,8 +5,8 @@ internal class HUDManager_Patches
 {
     [HarmonyPostfix]
     [HarmonyPatch(typeof(HUDManager), "Start")]
-    private void Start(HUDManager __instance)
+    private static void Start(HUDManager __instance)
     {
-        HUDUtils.TrySetSlotFrames(PluginConfig.SelectedFrameType.Value, PluginConfig.SelectedFrameVariant.Value);
+        Utils.Utils.TrySetSlotFrames(PluginConfig.SelectedFrameType.Value, PluginConfig.SelectedFrameVariant.Value);
     }
 }
