@@ -5,9 +5,9 @@ namespace HotbarRD;
 [BepInPlugin(PluginInfo.PluginGUID, PluginInfo.PluginName, PluginInfo.PluginVers)]
 internal class Plugin : BaseUnityPlugin
 {
+    internal static new PluginConfig Config { get; private set; }
     private static readonly Harmony harmony = new(PluginInfo.PluginGUID);
     internal static ManualLogSource logger;
-    internal static new PluginConfig Config { get; private set; }
 
     private void Awake()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HotbarRD;
+namespace HotbarRD.Utils;
 
 internal static class HUDUtils
 {
@@ -14,7 +14,10 @@ internal static class HUDUtils
         if (HUDManager.Instance.itemSlotIconFrames.Length < 1)
             return false;
 
-        foreach(var frame in HUDManager.Instance.itemSlotIconFrames)
+        if (AssetsManager.Singleton.SearchAssets(frameType).Length < 1)
+            return false;
+
+        foreach (var frame in HUDManager.Instance.itemSlotIconFrames)
         {
             frame.sprite = Sprite.Create()
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HotbarRD;
 
-internal enum CustomFrames
+public enum CustomFrames
 {
     Default,
     Cursed,
