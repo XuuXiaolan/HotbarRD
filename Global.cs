@@ -13,6 +13,7 @@ global using System.IO;
 global using System.Collections;
 global using System.Collections.Generic;
 global using System.Text;
+global using System.Text.RegularExpressions;
 global using System.Reflection;
 global using System.Drawing;
 
@@ -21,3 +22,4 @@ global using HotbarRD.Patches;
 global using HotbarRD.Utils;
 
 global using UnityEngine;
+global using UnityEngine.UI;

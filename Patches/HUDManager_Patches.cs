@@ -7,9 +7,6 @@ internal class HUDManager_Patches
     [HarmonyPatch(typeof(HUDManager), "Start")]
     private void Start(HUDManager __instance)
     {
-        foreach(var itemSlotFrame in __instance.itemSlotIconFrames)
-        {
-            itemSlotFrame.sprite = Sprite.Create(new());
-        }
+        HUDUtils.TrySetSlotFrames(PluginConfig.SelectedFrameType.Value, PluginConfig.SelectedFrameVariant.Value);
     }
 }
