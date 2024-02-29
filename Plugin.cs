@@ -3,15 +3,15 @@
 [BepInPlugin(PluginInfo.PluginGUID, PluginInfo.PluginName, PluginInfo.PluginVers)]
 internal class Plugin : BaseUnityPlugin
 {
-    internal static new PluginConfig Config { get; private set; }
+    internal static new PluginConfig Config { get; set; }
 
     private static readonly Harmony harmony = new(PluginInfo.PluginGUID);
     internal static ManualLogSource logger;
 
     private void Awake()
     {
-        logger = Logger;
         Config = new(base.Config);
+        logger = Logger;
 
         // I don't need to store it, it has a singleton field.
         new AssetsManager();

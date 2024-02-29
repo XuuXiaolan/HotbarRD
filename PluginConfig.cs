@@ -13,25 +13,27 @@ public class PluginConfig
 
     public PluginConfig(ConfigFile cfg)
     {
-        cfg.SettingChanged += OnChanged;
-
         SelectedFrameType = cfg.Bind(
-            "Hotbar Redesign",
-            "Hotbar design",
+            "General",
+            "Texture pack",
             CustomFrames.Default,
-            "Choose among the hotbar redesigns."
+            "Choose among the hotbar texture packs."
         );
 
         SelectedFrameVariant = cfg.Bind(
-            "Hotbar Redesign",
-            "Hotbar design variant",
+            "General",
+            "Texture variant",
             0,
             "Select among the variants of the selected hotbar design. If the variant is not found, the first existing will be used instead."
         );
+
+
+        cfg.SettingChanged += OnChanged;
     }
 
     internal static void OnChanged(object sender, SettingChangedEventArgs args)
     {
-        Utils.Utils.TrySetSlotFrames(SelectedFrameType.Value, SelectedFrameVariant.Value);
+        Plugin.logger.LogDebug($"Plugin config saved - Trying to set slot frames [{SelectedFrameType?.Value}:{SelectedFrameVariant?.Value}]");
+        HotbarUtils.TrySetSlotFrames(SelectedFrameType.Value, SelectedFrameVariant.Value);
     }
 }

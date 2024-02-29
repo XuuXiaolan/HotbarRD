@@ -25,7 +25,7 @@ internal class AssetsManager
             res.LoadImage(Assembly.GetExecutingAssembly().GetManifestResourceStream(name).ReadAllBytes());
             var resname = name.Split('.')[^2];
             Assets.Add(resname, res);
-            Plugin.logger.LogDebug($"Loaded resource {resname} ({name})");
+            Plugin.logger.LogDebug($"Loaded resource {resname} ({name}) {res.width}x{res.height}");
         }
     }
 
@@ -36,7 +36,8 @@ internal class AssetsManager
 
     internal Texture2D[] SearchAssets(string searchArgument)
     {
-        var regex = new Regex($"${searchArgument}", RegexOptions.IgnoreCase);
+        Plugin.logger.LogDebug($"Searching resource {searchArgument}");
+        var regex = new Regex($"{searchArgument}", RegexOptions.IgnoreCase);
         List<Texture2D> Results = [];
         foreach (var asset in Assets)
         {
