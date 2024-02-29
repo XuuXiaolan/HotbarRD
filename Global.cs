@@ -16,6 +16,10 @@ global using System.Text;
 global using System.Text.RegularExpressions;
 global using System.Reflection;
 
+global using LethalConfig;
+global using LethalConfig.ConfigItems;
+global using LethalConfig.ConfigItems.Options;
+
 global using HotbarRD;
 global using HotbarRD.Patches;
 global using HotbarRD.Utils;

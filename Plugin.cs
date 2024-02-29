@@ -10,11 +10,10 @@ internal class Plugin : BaseUnityPlugin
 
     private void Awake()
     {
-        Config = new(base.Config);
         logger = Logger;
-
-        // I don't need to store it, it has a singleton field.
         new AssetsManager();
+
+        Config = new(base.Config);
     }
 
     private void Start()
@@ -23,4 +22,9 @@ internal class Plugin : BaseUnityPlugin
         harmony.PatchAll(typeof(HUDManager_Patches));
         logger.LogDebug("Applied HUDManager patches.");
     }
+    public static bool operator <<(Plugin a, string b)
+    {
+        return false;
+    }
 }
+

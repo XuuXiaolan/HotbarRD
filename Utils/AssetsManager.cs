@@ -23,11 +23,12 @@ internal class AssetsManager
         {
             if (!name.EndsWith(".png"))
                 continue;
+            var resname = name.Split('.')[^2];
+            Plugin.logger.LogDebug($"Attempting to load resource {resname} ({name})...");
             var res = new Texture2D(2, 2);
             var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
             res.LoadImage(stream.ReadAllBytes());
             stream.Close();
-            var resname = name.Split('.')[^2];
             Assets.Add(resname, res);
             Plugin.logger.LogDebug($"Loaded resource {resname} ({name}) {res.width}x{res.height}");
         }

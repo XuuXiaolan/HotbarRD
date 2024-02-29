@@ -10,7 +10,6 @@ internal static class HotbarUtils
         if (HUDManager.Instance.itemSlotIconFrames.Length < 1)
             return false;
 
-
         if (frameType == CustomFrames.Default)
         {
             foreach(var frame in HUDManager.Instance.itemSlotIconFrames)
@@ -22,7 +21,6 @@ internal static class HotbarUtils
             return true;
         }
 
-
         var redesignedFrames = AssetsManager.Singleton.SearchAssets(frameType);
 
         Plugin.logger.LogDebug($"Redesigned frames: {redesignedFrames.Length} variants.");
@@ -30,12 +28,12 @@ internal static class HotbarUtils
         if (redesignedFrames.Length < 1)
             return false;
 
-        var selectedFrame = redesignedFrames[frameVariant] ?? redesignedFrames[0];
+        var selectedFrame = redesignedFrames[Math.Clamp(frameVariant, 0, redesignedFrames.Length-1)];
 
         foreach (var frame in HUDManager.Instance.itemSlotIconFrames)
         {
             Plugin.logger.LogDebug($"Updating slot: {frame.name} with {selectedFrame.width}x{selectedFrame.height} frame.");
-            var sprite = Sprite.Create(selectedFrame, new Rect(0, 0, selectedFrame.width, selectedFrame.height), frame.sprite.pivot);
+            var sprite = Sprite.Create(selectedFrame, new Rect(0, 0, selectedFrame.width, selectedFrame.height), Vector2.zero);
             frame.overrideSprite = sprite;
         }
 
