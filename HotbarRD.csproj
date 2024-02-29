@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>12.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Cursed1.png" />
+    <None Remove="Assets\Cursed2.png" />
+    <None Remove="Assets\Earth1.png" />
+    <None Remove="Assets\Earth2.png" />
+    <None Remove="Assets\Electric1.png" />
+    <None Remove="Assets\Electric2.png" />
+    <None Remove="Assets\Fire1.png" />
+    <None Remove="Assets\Fire2.png" />
+    <None Remove="Assets\Holy1.png" />
+    <None Remove="Assets\Holy2.png" />
+    <None Remove="Assets\Holy3.png" />
+    <None Remove="Assets\Neutral1.png" />
+    <None Remove="Assets\Plant2.png" />
+    <None Remove="Assets\Water1.png" />
+    <None Remove="Assets\Water2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Cursed1.png" />
+    <EmbeddedResource Include="Assets\Cursed2.png" />
+    <EmbeddedResource Include="Assets\Earth1.png" />
+    <EmbeddedResource Include="Assets\Earth2.png" />
+    <EmbeddedResource Include="Assets\Electric1.png" />
+    <EmbeddedResource Include="Assets\Electric2.png" />
+    <EmbeddedResource Include="Assets\Fire1.png" />
+    <EmbeddedResource Include="Assets\Fire2.png" />
+    <EmbeddedResource Include="Assets\Holy1.png" />
+    <EmbeddedResource Include="Assets\Holy2.png" />
+    <EmbeddedResource Include="Assets\Holy3.png" />
+    <EmbeddedResource Include="Assets\Neutral1.png" />
+    <EmbeddedResource Include="Assets\Plant2.png" />
+    <EmbeddedResource Include="Assets\Water1.png" />
+    <EmbeddedResource Include="Assets\Water2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

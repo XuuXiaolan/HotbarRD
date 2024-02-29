@@ -1,0 +1,7 @@
+# VS & binary files
+.vs/*
+obj/*
+bin/*
+
+# Assets
+Assets/*
