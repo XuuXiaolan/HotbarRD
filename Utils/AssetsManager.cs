@@ -2,6 +2,8 @@
 
 // This class can be overhauled to include any type of file, but mostly because it's not necessary,
 // I'm making it only compatible with PNGs. JPG and BMP compatibility can be made very easily.
+// Don't yell at me because I used embedded resources, at least this way it's hidden and there's
+// no file hanging around.
 internal class AssetsManager
 {
     internal static AssetsManager? Singleton { get; private set; }
@@ -22,7 +24,9 @@ internal class AssetsManager
             if (!name.EndsWith(".png"))
                 continue;
             var res = new Texture2D(2, 2);
-            res.LoadImage(Assembly.GetExecutingAssembly().GetManifestResourceStream(name).ReadAllBytes());
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+            res.LoadImage(stream.ReadAllBytes());
+            stream.Close();
             var resname = name.Split('.')[^2];
             Assets.Add(resname, res);
             Plugin.logger.LogDebug($"Loaded resource {resname} ({name}) {res.width}x{res.height}");

@@ -37,7 +37,6 @@ internal static class HotbarUtils
             Plugin.logger.LogDebug($"Updating slot: {frame.name} with {selectedFrame.width}x{selectedFrame.height} frame.");
             var sprite = Sprite.Create(selectedFrame, new Rect(0, 0, selectedFrame.width, selectedFrame.height), frame.sprite.pivot);
             frame.overrideSprite = sprite;
-            frame.material.shader = null;
         }
 
         return true;
