@@ -32,9 +32,10 @@ internal static class HotbarUtils
 
         foreach (var frame in HUDManager.Instance.itemSlotIconFrames)
         {
-            Plugin.logger.LogDebug($"Updating slot: {frame.name} with {selectedFrame.width}x{selectedFrame.height} frame.");
+            Plugin.logger.LogDebug($"Updating slot: {frame.name} with {selectedFrame.width}x{selectedFrame.height} frame. (Col:{frame.color})");
             var sprite = Sprite.Create(selectedFrame, new Rect(0, 0, selectedFrame.width, selectedFrame.height), Vector2.zero);
             frame.overrideSprite = sprite;
+            frame.color = new Vector4(1, 1, 1, 1);
         }
 
         return true;
