@@ -22,9 +22,5 @@ internal class Plugin : BaseUnityPlugin
         harmony.PatchAll(typeof(HUDManager_Patches));
         logger.LogDebug("Applied HUDManager patches.");
     }
-    public static bool operator <<(Plugin a, string b)
-    {
-        return false;
-    }
 }
 

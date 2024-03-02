@@ -10,6 +10,7 @@ public enum CustomFrames
     Cursed,
     Earth,
     Electric,
+    Fairy,
     Fire,
     Holy,
     Neutral,

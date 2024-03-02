@@ -49,7 +49,12 @@ public class PluginConfig
         LethalConfigManager.SetModDescription("HotbarRD adds new hotbar designs.\n\nArts by Xu Xiaolan\nMod by VELD-Dev");
         if(AssetsManager.Singleton != null)
         {
-            var modicon = AssetsManager.Singleton.SearchAssets(SelectedFrameType.Value)[SelectedFrameVariant.Value] ?? AssetsManager.Singleton.SearchAssets(CustomFrames.Holy)[0];
+            var modicons = AssetsManager.Singleton.SearchAssets(SelectedFrameType.Value);
+            Texture2D modicon;
+            if (modicons.Length < 1)
+                modicon = AssetsManager.Singleton.SearchAssets(CustomFrames.Holy)[0];
+            else
+                modicon = modicons[Math.Clamp(SelectedFrameVariant.Value, 0, modicons.Length - 1)];
             LethalConfigManager.SetModIcon(Sprite.Create(modicon, new(0, 0, modicon.width, modicon.height), new(0, 0)));
         }
 
@@ -60,7 +65,13 @@ public class PluginConfig
     {
         Plugin.logger.LogDebug($"Plugin config saved - Trying to set slot frames [{SelectedFrameType?.Value}:{SelectedFrameVariant?.Value}]");
         HotbarUtils.TrySetSlotFrames(SelectedFrameType.Value, SelectedFrameVariant.Value);
-        var modicon = AssetsManager.Singleton.SearchAssets(SelectedFrameType.Value)[SelectedFrameVariant.Value] ?? AssetsManager.Singleton.SearchAssets(CustomFrames.Holy)[0];
+
+        var modicons = AssetsManager.Singleton.SearchAssets(SelectedFrameType.Value);
+        Texture2D modicon;
+        if (modicons.Length < 1)
+            modicon = AssetsManager.Singleton.SearchAssets(CustomFrames.Holy)[0];
+        else
+            modicon = modicons[Math.Clamp(SelectedFrameVariant.Value, 0, modicons.Length - 1)];
         LethalConfigManager.SetModIcon(Sprite.Create(modicon, new(0, 0, modicon.width, modicon.height), new(0, 0)));
     }
 }

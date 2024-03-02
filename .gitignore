@@ -3,5 +3,7 @@
 obj/*
 bin/*
 
-# Assets
+# Textures and assetbundles
 Assets/*
+# But allow all the UnityObjects
+!Assets/UnityObjects/

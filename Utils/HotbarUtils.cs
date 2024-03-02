@@ -18,12 +18,13 @@ internal static class HotbarUtils
             Plugin.logger.LogDebug($"Default HUD Rntime Animator Controller was null. Filled it with {animator.runtimeAnimatorController.name}");
         }
 
+        var frames = HUDManager.Instance.itemSlotIconFrames;
+
         if (frameType == CustomFrames.Default)
         {
-            foreach(var frame in HUDManager.Instance.itemSlotIconFrames)
+            foreach(var frame in frames)
             {
                 frame.overrideSprite = frame.sprite;
-                frame.material = frame.defaultMaterial;
 
                 var animator = frame.gameObject.GetComponent<Animator>() ?? throw new NullReferenceException("The animator was not found and then cannot be processed!");
 
@@ -44,12 +45,11 @@ internal static class HotbarUtils
 
         var selectedFrame = redesignedFrames[Math.Clamp(frameVariant, 0, redesignedFrames.Length-1)];
 
-        foreach (var frame in HUDManager.Instance.itemSlotIconFrames)
+        foreach (var frame in frames)
         {
             Plugin.logger.LogDebug($"Updating slot: {frame.name} with {selectedFrame.width}x{selectedFrame.height} frame. (Col:{frame.color})");
             var sprite = Sprite.Create(selectedFrame, new Rect(0, 0, selectedFrame.width, selectedFrame.height), Vector2.zero);
             frame.overrideSprite = sprite;
-            frame.color = new Vector4(1, 1, 1, 1);
 
             var animator = frame.gameObject.GetComponent<Animator>() ?? throw new NullReferenceException("The animator was not found and then cannot be processed!");
 
