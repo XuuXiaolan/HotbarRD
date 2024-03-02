@@ -8,39 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Cursed1.png" />
-    <None Remove="Assets\Cursed2.png" />
-    <None Remove="Assets\Earth1.png" />
-    <None Remove="Assets\Earth2.png" />
-    <None Remove="Assets\Electric1.png" />
-    <None Remove="Assets\Electric2.png" />
-    <None Remove="Assets\Fire1.png" />
-    <None Remove="Assets\Fire2.png" />
-    <None Remove="Assets\Holy1.png" />
-    <None Remove="Assets\Holy2.png" />
-    <None Remove="Assets\Holy3.png" />
-    <None Remove="Assets\Neutral1.png" />
-    <None Remove="Assets\Plant2.png" />
-    <None Remove="Assets\Water1.png" />
-    <None Remove="Assets\Water2.png" />
+    <None Remove="Assets\hotbarrd.assets" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Cursed1.png" />
-    <EmbeddedResource Include="Assets\Cursed2.png" />
-    <EmbeddedResource Include="Assets\Earth1.png" />
-    <EmbeddedResource Include="Assets\Earth2.png" />
-    <EmbeddedResource Include="Assets\Electric1.png" />
-    <EmbeddedResource Include="Assets\Electric2.png" />
-    <EmbeddedResource Include="Assets\Fire1.png" />
-    <EmbeddedResource Include="Assets\Fire2.png" />
-    <EmbeddedResource Include="Assets\Holy1.png" />
-    <EmbeddedResource Include="Assets\Holy2.png" />
-    <EmbeddedResource Include="Assets\Holy3.png" />
-    <EmbeddedResource Include="Assets\Neutral1.png" />
-    <EmbeddedResource Include="Assets\Plant2.png" />
-    <EmbeddedResource Include="Assets\Water1.png" />
-    <EmbeddedResource Include="Assets\Water2.png" />
+    <EmbeddedResource Include="Assets\hotbarrd.assets" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,11 +28,20 @@
     <Reference Include="LethalConfig">
       <HintPath>..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\BepInEx\plugins\LethalConfigs\LethalConfig.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Animation.Rigging.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>..\..\..\..\..\..\..\Mounted\SSD 2\soft\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>

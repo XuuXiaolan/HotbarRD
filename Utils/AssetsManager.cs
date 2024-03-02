@@ -1,13 +1,10 @@
 ﻿namespace HotbarRD.Utils;
 
-// This class can be overhauled to include any type of file, but mostly because it's not necessary,
-// I'm making it only compatible with PNGs. JPG and BMP compatibility can be made very easily.
-// Don't yell at me because I used embedded resources, at least this way it's hidden and there's
-// no file hanging around.
 internal class AssetsManager
 {
     internal static AssetsManager? Singleton { get; private set; }
-    private readonly Dictionary<string, Texture2D> Assets;
+    private readonly Dictionary<string, UnityEngine.Object> Assets;
+    private AssetBundle assetBundle;
 
     internal AssetsManager()
     {
@@ -19,31 +16,34 @@ internal class AssetsManager
     internal void LoadAllAssets()
     {
         var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-        foreach (var name in names)
+        var bundleName = names.FirstOrDefault((n) => n.EndsWith("hotbarrd.assets"));
+        var bundleStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bundleName);
+
+        assetBundle = AssetBundle.LoadFromStream(bundleStream);
+        bundleStream.Close();
+
+        var assets = assetBundle.LoadAllAssets();
+
+        foreach (var asset in assets)
         {
-            if (!name.EndsWith(".png"))
-                continue;
-            var resname = name.Split('.')[^2];
-            Plugin.logger.LogDebug($"Attempting to load resource {resname} ({name})...");
-            var res = new Texture2D(2, 2);
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
-            res.LoadImage(stream.ReadAllBytes());
-            stream.Close();
-            Assets.Add(resname, res);
-            Plugin.logger.LogDebug($"Loaded resource {resname} ({name}) {res.width}x{res.height}");
+            var resname = asset.GetType().Name + "." + asset.name;
+            Assets.TryAdd(resname, asset);
+            Plugin.logger.LogDebug($"Loaded and cached asset '{resname}' ({asset.name}) of type {asset.GetType().FullName}.");
         }
     }
 
-    internal bool TryGetAsset(string name, out Texture2D res)
+    internal bool TryGetAsset<T>(string name, out T result) where T : UnityEngine.Object
     {
-        return Assets.TryGetValue(name, out res);
+        var wasAssetFound = Assets.TryGetValue($"{typeof(T).Name}.{name}", out var asset);
+        result = (T)asset;
+        return wasAssetFound;
     }
 
-    internal Texture2D[] SearchAssets(string searchArgument)
+    internal UnityEngine.Object[] SearchAssets(string searchArgument)
     {
         Plugin.logger.LogDebug($"Searching resource {searchArgument}");
         var regex = new Regex($"{searchArgument}", RegexOptions.IgnoreCase);
-        List<Texture2D> Results = [];
+        List<UnityEngine.Object> Results = [];
         foreach (var asset in Assets)
         {
             if (!regex.IsMatch(asset.Key))
@@ -51,11 +51,27 @@ internal class AssetsManager
 
             Results.Add(asset.Value);
         }
+        Plugin.logger.LogDebug($"Resources found: {Results.Count}/{Assets.Count}");
         return Results.ToArray();
+    }
+
+    internal T[] SearchAssets<T>(string searchArgument) where T : UnityEngine.Object
+    {
+        var preResults = SearchAssets($"{searchArgument}").Where((o) => o.GetType() == typeof(T)).ToArray();
+        List<T> reslist = [];
+        foreach(var asset in preResults)
+        {
+            reslist.Add((T)asset);
+        }
+        var results = reslist.ToArray();
+        Plugin.logger.LogDebug($"Resources filtered: {results.Length}/{Assets.Count}");
+        if (results.Length < 1 || results is null)
+            return [];
+        return results;
     }
 
     internal Texture2D[] SearchAssets(CustomFrames frameType)
     {
-        return SearchAssets(frameType.ToString());
+        return SearchAssets<Texture2D>(frameType.ToString());
     }
 }
