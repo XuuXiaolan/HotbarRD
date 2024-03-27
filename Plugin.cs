@@ -14,10 +14,7 @@ internal class Plugin : BaseUnityPlugin
         new AssetsManager();
 
         Config = new(base.Config);
-    }
 
-    private void Start()
-    {
         logger.LogInfo("Hotbar Redesign - Arts by Xu Xiaolan / Mod programmed by VELD-Dev.");
         harmony.PatchAll(typeof(HUDManager_Patches));
         logger.LogDebug("Applied HUDManager patches.");
